@@ -2,29 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Table from 'react-bootstrap/Table';
-import * as ToDo from './ToDo';
+import * as Search from './Search';
 
-const ToDoList = ({ toDoList }) => (
+const SearchList = ({searchList}) => (
   <Jumbotron>
     <Table>
       <thead>
         <tr>
         <th>ID</th>
-        <th>Title</th>
         <th>Body</th>
         </tr>
       </thead>
       <tbody>
-      {toDoList.map((toDo, index) => (
+      {searchList.map((search, index) => (
         <tr>
           <td>
-        <ToDo.ToDoId key={index} {...toDo} />
-        </td>
-        <td>
-        <ToDo.ToDoTitle key={index} {...toDo} />
+        <Search.SearchId key={index} {...search} />
         </td>
          <td>
-        <ToDo.ToDoBody key={index} {...toDo} />
+        <Search.SearchDescription key={index} {...search} />
         </td>
         </tr>
       ))}
@@ -33,14 +29,14 @@ const ToDoList = ({ toDoList }) => (
   </Jumbotron>
 );
 
-ToDoList.propTypes = {
-  toDoList: PropTypes.arrayOf(
+SearchList.propTypes = {
+  searchList: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      body: PropTypes.string.isRequired
+      description: PropTypes.string.isRequired
+      //body: PropTypes.string.isRequired
     }).isRequired
   ).isRequired
 };
 
-export default ToDoList;
+export default SearchList;
